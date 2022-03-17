@@ -1,0 +1,79 @@
+package com.codewithme;
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Game {
+    public int guess=0;
+    public int userInput;
+    public int computerInput;
+
+
+    public int getGuess() {
+        return guess;
+    }
+
+    public void setGuess(int guess) {
+        this.guess = guess;
+    }
+
+
+    public  Game(){
+        Random random= new Random();
+        this.computerInput= random.nextInt(100);
+        System.out.println("Let's Start The Game");
+        System.out.println();
+
+    }
+
+
+
+    public void takeUserInput() {
+
+        System.out.println("Guess a Number:");
+        Scanner scan= new Scanner(System.in);
+        userInput=scan.nextInt();
+
+
+    }
+
+
+
+    public boolean isCorrectnumber() {
+        guess++;
+        if(userInput>computerInput){
+            System.out.println("You guessed bigger than computerInput Number");
+            return false;
+        }
+        else if(userInput<computerInput){
+            System.out.println("You guessed smaller than computerInput number");
+            return false;
+        }
+        else{
+            System.out.println("Equal to computerInput number");
+            System.out.println("CONGRATULATIONS! You guessed Right it's "+computerInput+" And you guessed it in "+ guess +" times");
+            return true;
+        }
+
+
+    }
+
+
+}
+
+
+public class GuessNumberGame {
+    public static void main(String[] args) {
+        Game oneTime= new Game();
+
+        boolean runUpto=false;
+        while (!runUpto){
+            oneTime.takeUserInput();
+            runUpto=oneTime.isCorrectnumber();
+            System.out.println(runUpto);
+        }
+        System.out.println();
+        System.out.println("GAME OVER!! PLAY AGAIN");
+    }
+}
