@@ -1,0 +1,31 @@
+public static void main(String[] args) {
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("Principal:");
+        double principal_value= scanner.nextDouble();
+
+        System.out.print("Annual Interest Rate:");
+        double ANR_value= scanner.nextFloat();
+
+        System.out.print("Period(year):");
+        int year_value= scanner.nextInt();
+
+double Mortgage=  mortgageValue(principal_value,ANR_value,year_value);
+  String mortgageFormatted= NumberFormat.getCurrencyInstance().format(Mortgage);
+        System.out.println("Mortgage value:"+ mortgageFormatted);
+
+
+    } // this method is public and the value that are assigned is totally accessible  by the another method
+
+public static double mortgageValue(
+        double principal_value,
+        double ANR_value,
+        int year_value ){
+
+    final int year=12;
+    final int percent=100;
+    double MIR_value= (ANR_value/percent)/year;
+    int numberOfPay= year_value*year;
+    double Mortgage=  principal_value* (MIR_value* (Math.pow(1+MIR_value,numberOfPay)) ) / ((Math.pow(1+MIR_value,numberOfPay))-1);
+
+    return Mortgage;
+}
