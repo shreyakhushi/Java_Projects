@@ -1,0 +1,80 @@
+package com.codewithme;
+
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+public class Main {
+    final static int year = 12;
+    final static int percent = 100;
+
+    public static void main(String[] args) {
+
+        int principal_value = 0;
+        double ANR_value = 0;
+        double MIR_value=0;
+        int year_value=0;
+        int numberOfPay=0;
+
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Principal(1k-1M):");
+            principal_value = scanner.nextInt();
+            if (principal_value >= 1000 && principal_value <= 1_000_000) {
+                break;
+            } else if (principal_value < 1000) {
+                System.out.println("Principal value is less than 1000 take between 1K to 1M");
+                continue;
+            } else
+                System.out.println("Principal value is more than 1_000_000 take between 1K to 1M");
+            continue;
+        }
+
+
+        while (true) {
+            System.out.print("Annual Interest Rate (1-30):");
+            ANR_value = scanner.nextDouble();
+            if (ANR_value > 0 && ANR_value <= 30) {
+                MIR_value = (ANR_value / percent) / year;
+                break;
+            }else if(ANR_value<=0) {
+                System.out.println("equal or below to 0. So take between 1-30");
+                continue;
+            }
+            else
+                System.out.println("More or above to 30. So take between 1-30");
+            continue;
+
+            // monthly income value calculated by ((annual income rate )divide by100) multiply year (12)
+        }
+
+        while(true) {
+            System.out.print("Period(year(1-30)):");
+            year_value = scanner.nextInt();
+            if (year_value > 0 && year_value <= 30){
+                 numberOfPay = year_value * year;
+                break;
+            }
+        else if (ANR_value <= 0) {
+                System.out.println("take between 1-30");
+                continue;
+            }
+            else
+                System.out.println("take between 1-30");
+            continue;
+        }
+        // n= year value *12(year constant)
+
+        System.out.print("Mortgage:");
+        double Mortgage = principal_value * (MIR_value * (Math.pow(1 + MIR_value, numberOfPay))) / ((Math.pow(1 + MIR_value, numberOfPay)) - 1); //formula of mortgage
+        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(Mortgage); // converted the value of mortgage int0 currency
+        System.out.println("Mortgage value:" + mortgageFormatted);
+
+
+        // in this majorly I have used the formatting numbers and reading inputs
+
+
+    }
+
+
+}
