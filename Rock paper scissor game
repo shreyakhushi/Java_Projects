@@ -1,0 +1,51 @@
+package com.codewithme;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan= new Scanner(System.in);
+        System.out.println("Choose Rock:1, Paper:2, Scissor:0");
+        int youChoose= scan.nextInt();
+
+        System.out.println("Computer's Turn");
+        Random random= new Random();
+        int computerChoose= random.nextInt(3);
+
+        if(youChoose==computerChoose){
+            System.out.println("Game Draw");
+        }
+        else if((youChoose==2 && computerChoose==1) || (youChoose==0 && computerChoose==2)
+                || (youChoose==1 && computerChoose==0)){
+            System.out.println();
+
+            System.out.println("**You Win!**");
+            System.out.println("CONGRATULATIONS! WELL PLAYED");
+        }
+        else{
+            System.out.println();
+            System.out.println("**Computer win!**");
+            System.out.println("PLAY AGAIN TO WIN THIS TIME");
+
+
+        }
+        // to know what was the choice of computer
+        if (computerChoose==0) {
+            System.out.println("Computer chose "+ computerChoose + " Scissor");
+
+        }
+        else if(computerChoose==1) {
+            System.out.println("Computer chose "+ computerChoose + " Rock");
+
+        }
+        else {
+            System.out.println("Computer chose "+ computerChoose + " Paper");
+
+        }
+        System.out.println();
+        System.out.println("!!GAME OVER!!");
+
+    }
+}
